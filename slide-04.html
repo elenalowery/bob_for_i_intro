@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 4 — Best Practices for Context Management</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    .section-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #57606a;
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    .bp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .bp-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+
+    .bp-num {
+      min-width: 22px;
+      height: 22px;
+      background: #0f62fe;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bp-text strong {
+      display: block;
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: #1f2328;
+      margin-bottom: 0.15rem;
+    }
+
+    .bp-text span {
+      font-size: 0.82rem;
+      color: #57606a;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .bp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>4</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 4</span>
+    <p class="part-tag">Part 1</p>
+    <h2 class="slide-title">Best Practices for Context Management</h2>
+    <p class="slide-subtitle">How to get better, more consistent output from Bob</p>
+
+    <div class="content">
+
+      <div class="bp-grid">
+        <div class="bp-card">
+          <div class="bp-num">1</div>
+          <div class="bp-text">
+            <strong>Be specific in your prompt</strong>
+            <span>State the task, constraints, and expected format. Vague prompts produce vague answers.</span>
+          </div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-num">2</div>
+          <div class="bp-text">
+            <strong>Use the right mode &amp; skills</strong>
+            <span>Activate IBM i Developer mode so Bob loads the correct domain instructions automatically.</span>
+          </div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-num">3</div>
+          <div class="bp-text">
+            <strong>Scope the context deliberately</strong>
+            <span>Reference only the files relevant to your task. Unrelated code adds noise and dilutes precision.</span>
+          </div>
+        </div>
+        <div class="bp-card">
+          <div class="bp-num">4</div>
+          <div class="bp-text">
+            <strong>Iterate on the response</strong>
+            <span>Follow up with clarifying prompts. Treat the first response as a draft, not a final answer.</span>
+          </div>
+        </div>
+        <div class="bp-card" style="grid-column: span 2;">
+          <div class="bp-num">5</div>
+          <div class="bp-text">
+            <strong>Provide examples where precision matters</strong>
+            <span>For code generation or transformations, include a before/after example in the prompt to anchor the output style.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="exercise-block">
+        <p class="exercise-label">&#10022; Exercise</p>
+        <h3>Try these prompts in Bob</h3>
+        <ul class="prompt-list">
+          <li><span class="prompt-pill">Can you show the exact context that's sent to the LLM?</span></li>
+          <li><span class="prompt-pill">What happens if your context window gets full?</span></li>
+          <li><span class="prompt-pill">Do you automatically improve the prompts that I send?</span></li>
+        </ul>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-03.html">&#8592; Back</a>
+      <span class="slide-counter">4 / 14</span>
+      <a class="nav-btn primary" href="slide-05.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
