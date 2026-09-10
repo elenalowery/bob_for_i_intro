@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 8 — Bob: Use Cases and Features: Exercise</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      min-width: 26px;
+      height: 26px;
+      background: #0f62fe;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-body { flex: 1; }
+
+    .step-body p {
+      font-size: 0.93rem;
+      color: #1f2328;
+      line-height: 1.55;
+    }
+
+    .prompt-block {
+      margin-top: 0.5rem;
+      background: #f7f8fa;
+      border: 1px solid #d0d7de;
+      border-left: 3px solid #0f62fe;
+      border-radius: 0 6px 6px 0;
+      padding: 0.55rem 0.85rem;
+    }
+
+    .prompt-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0f62fe;
+      margin-bottom: 0.3rem;
+    }
+
+    .prompt-block p {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      color: #1f2328;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #fffbe6;
+      border: 1px solid #f0d990;
+      border-radius: 5px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.8rem;
+      color: #9a6700;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>8</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 8</span>
+    <p class="part-tag">Part 2 &mdash; Exercise</p>
+    <h2 class="slide-title">Bob: Use Cases and Features</h2>
+    <p class="slide-subtitle">Explore Bob's breadth — try these prompts and observe how it reasons about each</p>
+
+    <div class="content">
+      <ol class="step-list">
+
+        <li class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <p>Ask Bob about the technologies it supports.</p>
+            <div class="prompt-block">
+              <p class="prompt-label">Prompt</p>
+              <p>Which modern technologies and programming languages do you support?</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <p>Ask Bob about its coverage of the software development lifecycle.</p>
+            <div class="prompt-block">
+              <p class="prompt-label">Prompt</p>
+              <p>Which SDLC tasks can you help with? Give me examples for each phase.</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <p>Ask Bob about IBM i support specifically.</p>
+            <div class="prompt-block">
+              <p class="prompt-label">Prompt</p>
+              <p>What IBM i development tasks can you assist with? What makes you different from a general-purpose AI tool for these platforms?</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <p>Ask Bob about DevSecOps capabilities.</p>
+            <div class="prompt-block">
+              <p class="prompt-label">Prompt</p>
+              <p>How can you help with DevSecOps? Which security and DevOps tools or practices do you understand?</p>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <p>Ask Bob to recommend the best use case for your own project.</p>
+            <div class="prompt-block">
+              <p class="prompt-label">Prompt</p>
+              <p>Based on the open workspace, what are the top 3 tasks where you could add the most value right now?</p>
+            </div>
+            <span class="note">&#9432;&nbsp; This prompt uses workspace context — Bob will scan your project files to tailor its answer.</span>
+          </div>
+        </li>
+
+      </ol>
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-07.html">&#8592; Back</a>
+      <span class="slide-counter">8 / 14</span>
+      <a class="nav-btn primary" href="slide-09.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
