@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 12 — IBM i Modes: Hands-On Exercise</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .step {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      min-width: 26px;
+      height: 26px;
+      background: #0f62fe;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-body { flex: 1; }
+
+    .step-body p {
+      font-size: 0.93rem;
+      color: #1f2328;
+      line-height: 1.55;
+    }
+
+    /* ── Prompt block ── */
+    .prompt-block {
+      margin-top: 0.5rem;
+      background: #f7f8fa;
+      border: 1px solid #d0d7de;
+      border-left: 3px solid #0f62fe;
+      border-radius: 0 6px 6px 0;
+      padding: 0.55rem 0.85rem;
+    }
+
+    .prompt-block.purple {
+      border-left-color: #7c5cd8;
+    }
+
+    .prompt-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0f62fe;
+      margin-bottom: 0.3rem;
+    }
+
+    .prompt-label.purple { color: #7c5cd8; }
+
+    .prompt-block p {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.82rem;
+      color: #1f2328;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    /* ── Mode section header ── */
+    .mode-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .mode-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.85rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+    }
+
+    .mode-header.blue {
+      background: #eff4ff;
+      border: 1px solid #c7d7fd;
+    }
+
+    .mode-header.purple {
+      background: #fdfaff;
+      border: 1px solid #e2d9f8;
+    }
+
+    .mode-header .mode-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .mode-header.blue   .mode-icon { background: #0f62fe; }
+    .mode-header.purple .mode-icon { background: #7c5cd8; }
+
+    .mode-header-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .mode-header.blue   .mode-header-text strong { color: #0f62fe; }
+    .mode-header.purple .mode-header-text strong { color: #7c5cd8; }
+
+    .mode-header-text span {
+      font-size: 0.8rem;
+      color: #57606a;
+    }
+
+    /* ── Two-column layout for the two mode sections ── */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .note {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #fffbe6;
+      border: 1px solid #f0d990;
+      border-radius: 5px;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.8rem;
+      color: #9a6700;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .modes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>12</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 12</span>
+    <p class="part-tag">Part 2 &mdash; Exercise</p>
+    <h2 class="slide-title">IBM i Modes: Hands-On Exercise</h2>
+    <p class="slide-subtitle">Try both IBM i modes and compare how Bob responds — notice which skills and tools are invoked automatically</p>
+
+    <div class="content">
+      <div class="modes-grid">
+
+        <!-- ══ IBM i DEVELOPER MODE ══ -->
+        <div class="mode-section">
+          <div class="mode-header blue">
+            <div class="mode-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div class="mode-header-text">
+              <strong>IBM i Developer Mode</strong>
+              <span>Focus: COBOL on IBM i</span>
+            </div>
+          </div>
+
+          <ol class="step-list">
+
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <p>Switch to <strong>IBM i Developer</strong> mode, then ask Bob to explain the structure of a COBOL program.</p>
+                <div class="prompt-block">
+                  <p class="prompt-label">Prompt</p>
+                  <p>Explain the structure of a COBOL program on IBM i. What are the four divisions and what does each one do?</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <p>Ask Bob to generate a COBOL program that reads from a physical file.</p>
+                <div class="prompt-block">
+                  <p class="prompt-label">Prompt</p>
+                  <p>Generate a COBOL on IBM i program that reads all records from a physical file called CUSTOMERS and displays each customer's name and account number.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <p>Ask Bob to modernize a COBOL program to use embedded SQL.</p>
+                <div class="prompt-block">
+                  <p class="prompt-label">Prompt</p>
+                  <p>Rewrite the CUSTOMERS program to use embedded SQL instead of native file I/O. Use a cursor to fetch all rows.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <p>Ask Bob to review code for best practices.</p>
+                <div class="prompt-block">
+                  <p class="prompt-label">Prompt</p>
+                  <p>Review this COBOL program for IBM i best practices. Flag any OPM-style patterns that should be updated for ILE COBOL.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num">5</div>
+              <div class="step-body">
+                <p>Ask Bob to generate a unit test stub for a COBOL procedure.</p>
+                <div class="prompt-block">
+                  <p class="prompt-label">Prompt</p>
+                  <p>Generate an RPGUnit-style test stub for a COBOL procedure that validates customer account numbers. What testing approach would you recommend?</p>
+                </div>
+                <span class="note">&#9432;&nbsp; Observe which COBOL skills Bob auto-loads in its reasoning.</span>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <!-- ══ IBM i DATABASE MODE ══ -->
+        <div class="mode-section">
+          <div class="mode-header purple">
+            <div class="mode-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div class="mode-header-text">
+              <strong>IBM i Database Mode</strong>
+              <span>Focus: Db2 for i &amp; SQL</span>
+            </div>
+          </div>
+
+          <ol class="step-list">
+
+            <li class="step">
+              <div class="step-num" style="background:#7c5cd8;">1</div>
+              <div class="step-body">
+                <p>Switch to <strong>IBM i Database</strong> mode, then ask Bob about converting DDS to DDL.</p>
+                <div class="prompt-block purple">
+                  <p class="prompt-label purple">Prompt</p>
+                  <p>What is the recommended approach for migrating a DDS physical file definition to a Db2 for i DDL table? What are the key differences to watch for?</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num" style="background:#7c5cd8;">2</div>
+              <div class="step-body">
+                <p>Ask Bob to generate a SQL query using IBM i system catalog views.</p>
+                <div class="prompt-block purple">
+                  <p class="prompt-label purple">Prompt</p>
+                  <p>Write a SQL query using QSYS2 system catalog views to list all physical files in library SAMCO, including their record count and last modified date.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num" style="background:#7c5cd8;">3</div>
+              <div class="step-body">
+                <p>Ask Bob to analyze SQL performance.</p>
+                <div class="prompt-block purple">
+                  <p class="prompt-label purple">Prompt</p>
+                  <p>Analyze this SQL query for performance issues on Db2 for i. Suggest index strategy improvements and explain how to verify them using the plan cache.</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num" style="background:#7c5cd8;">4</div>
+              <div class="step-body">
+                <p>Ask Bob to explain journaling and commitment control.</p>
+                <div class="prompt-block purple">
+                  <p class="prompt-label purple">Prompt</p>
+                  <p>Explain how journaling and commitment control work on IBM i. When should I use COMMIT and ROLLBACK in a Db2 for i application?</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step">
+              <div class="step-num" style="background:#7c5cd8;">5</div>
+              <div class="step-body">
+                <p>Ask Bob to generate a stored procedure.</p>
+                <div class="prompt-block purple">
+                  <p class="prompt-label purple">Prompt</p>
+                  <p>Generate a Db2 for i SQL stored procedure that accepts a customer ID as input and returns the customer's order history for the last 12 months.</p>
+                </div>
+                <span class="note">&#9432;&nbsp; Compare the Db2 skills Bob invokes here vs. the COBOL skills from the Developer mode prompts.</span>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+      </div><!-- /modes-grid -->
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-11.html">&#8592; Back</a>
+      <span class="slide-counter">12 / 14</span>
+      <a class="nav-btn primary" href="slide-13.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
