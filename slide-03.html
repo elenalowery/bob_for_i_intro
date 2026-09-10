@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 3 — Quality of Agentic Output</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #57606a;
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    /* ── Controllable / not tag ── */
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 0.12rem 0.55rem;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .tag.yes  { background: #e6f4ea; color: #1a7f37; border: 1px solid #b8dfc3; }
+    .tag.part { background: #fff8e6; color: #9a6700; border: 1px solid #f0d990; }
+    .tag.no   { background: #ffeef0; color: #cf222e; border: 1px solid #f5c6cb; }
+
+    /* ── Diagram ── */
+    .diagram-wrap {
+      margin: 1.25rem 0 0.25rem;
+      overflow-x: auto;
+    }
+
+    /* ── Best practice grid ── */
+    .bp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .bp-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 0.7rem 0.9rem;
+      display: flex;
+      gap: 0.65rem;
+      align-items: flex-start;
+    }
+
+    .bp-num {
+      min-width: 22px;
+      height: 22px;
+      background: #0f62fe;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .bp-text strong {
+      display: block;
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: #1f2328;
+      margin-bottom: 0.15rem;
+    }
+
+    .bp-text span {
+      font-size: 0.82rem;
+      color: #57606a;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .bp-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>3</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 3</span>
+    <p class="part-tag">Part 1</p>
+    <h2 class="slide-title">Quality of Agentic Output</h2>
+    <p class="slide-subtitle">What drives output quality — and what you can control</p>
+
+    <div class="content">
+
+      <!-- ── Factors ── -->
+      <p class="section-heading">Output quality depends on</p>
+      <ul>
+        <li><strong>Your prompt</strong> <span class="tag yes">You control</span></li>
+        <li><strong>Context</strong> — provided by you and retained in memory <span class="tag part">Mostly controllable</span></li>
+        <li><strong>The quality of the LLM</strong> <span class="tag no">Vendor-determined</span></li>
+      </ul>
+
+      <!-- ── What's in context ── -->
+      <p class="section-heading">What's included in the context?</p>
+      <ul>
+        <li>All inputs and outputs of the current chat session</li>
+        <li>Files and folders explicitly referenced in your prompt</li>
+        <li>The entire open workspace project — unless you instruct Bob to ignore it</li>
+        <li>Matched <strong>modes</strong> and <strong>skills</strong> — targeted instructions Bob applies based on the task</li>
+      </ul>
+
+      <!-- ── Diagram ── -->
+      <p class="section-heading">Example: how Bob builds context</p>
+      <div class="diagram-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 260" width="780" height="260"
+             role="img" aria-label="Bob context diagram for an IBM i query">
+
+          <!-- ── User prompt box ── -->
+          <rect x="10" y="90" width="200" height="76" rx="7" fill="#eff4ff" stroke="#c7d7fd" stroke-width="1.5"/>
+          <text x="110" y="113" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#0f62fe">User Prompt</text>
+          <text x="110" y="131" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">"Which physical files on</text>
+          <text x="110" y="146" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">IBM i are referenced in</text>
+          <text x="110" y="158" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">this project?"</text>
+
+          <!-- arrow prompt → context -->
+          <line x1="210" y1="128" x2="258" y2="128" stroke="#0f62fe" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+          <!-- ── Context box ── -->
+          <rect x="262" y="10" width="260" height="240" rx="8" fill="#f7f8fa" stroke="#e5e7eb" stroke-width="1.5"/>
+          <text x="392" y="34" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11" font-weight="700" fill="#1f2328">Bob Context</text>
+
+          <!-- item 1 -->
+          <rect x="278" y="46" width="228" height="30" rx="5" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+          <text x="294" y="60" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" font-weight="600" fill="#0f62fe">1</text>
+          <text x="308" y="60" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#1f2328">User prompt</text>
+          <text x="308" y="71" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#57606a">The question as typed</text>
+
+          <!-- item 2 -->
+          <rect x="278" y="84" width="228" height="40" rx="5" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+          <text x="294" y="99" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" font-weight="600" fill="#7c5cd8">2</text>
+          <text x="308" y="99" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#1f2328">IBM i Developer mode + skills</text>
+          <text x="308" y="112" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#57606a">Matched mode instructions &amp;</text>
+          <text x="308" y="121" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#57606a">relevant IBM i skill rules</text>
+
+          <!-- item 3 -->
+          <rect x="278" y="132" width="228" height="40" rx="5" fill="#ffffff" stroke="#d0d7de" stroke-width="1"/>
+          <text x="294" y="147" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" font-weight="600" fill="#1a7f37">3</text>
+          <text x="308" y="147" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#1f2328">Workspace project files</text>
+          <text x="308" y="160" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#57606a">RPG, COBOL, DDS source code</text>
+          <text x="308" y="169" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#57606a">scanned from the open workspace</text>
+
+          <!-- chat history note -->
+          <rect x="278" y="180" width="228" height="28" rx="5" fill="#fffbe6" stroke="#f0d990" stroke-width="1"/>
+          <text x="294" y="198" font-family="-apple-system,Segoe UI,sans-serif" font-size="9" fill="#9a6700">+ Chat history (prior turns in session)</text>
+
+          <!-- ── LLM box ── -->
+          <rect x="562" y="90" width="200" height="76" rx="7" fill="#fdfaff" stroke="#e2d9f8" stroke-width="1.5"/>
+          <text x="662" y="113" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11" font-weight="600" fill="#7c5cd8">Frontier LLM</text>
+          <text x="662" y="131" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">Receives full context,</text>
+          <text x="662" y="146" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">generates grounded</text>
+          <text x="662" y="158" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#444c56">answer</text>
+
+          <!-- arrow context → LLM -->
+          <line x1="522" y1="128" x2="558" y2="128" stroke="#7c5cd8" stroke-width="1.5" marker-end="url(#arrow-purple)"/>
+
+          <!-- arrowhead defs -->
+          <defs>
+            <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#0f62fe"/>
+            </marker>
+            <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#7c5cd8"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-02.html">&#8592; Back</a>
+      <span class="slide-counter">3 / 14</span>
+      <a class="nav-btn primary" href="slide-04.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
