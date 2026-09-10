@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 7 — Bob: Use Cases and Features</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    /* ── Main layout ── */
+    .body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 0.25rem;
+      align-items: start;
+    }
+
+    /* ── IDE mockup ── */
+    .ide-mockup {
+      background: #1e1e2e;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #3a3a4a;
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+    }
+
+    .ide-titlebar {
+      background: #2d2d3f;
+      padding: 0.4rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .ide-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+    }
+    .ide-dot.red    { background: #ff5f57; }
+    .ide-dot.yellow { background: #febc2e; }
+    .ide-dot.green  { background: #28c840; }
+
+    .ide-tab {
+      margin-left: 0.75rem;
+      font-size: 0.72rem;
+      color: #a0a0b8;
+      background: #3a3a52;
+      padding: 0.18rem 0.6rem;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .ide-tab.active {
+      background: #1e1e2e;
+      color: #e0e0f0;
+    }
+
+    .ide-body {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+    }
+
+    /* sidebar */
+    .ide-sidebar {
+      background: #252535;
+      padding: 0.5rem 0;
+      border-right: 1px solid #3a3a4a;
+    }
+
+    .ide-sidebar-item {
+      font-size: 0.68rem;
+      color: #8080a0;
+      padding: 0.18rem 0.7rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .ide-sidebar-item.active {
+      color: #c0c0e0;
+      background: #3a3a52;
+    }
+
+    .ide-sidebar-section {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #6060a0;
+      padding: 0.4rem 0.7rem 0.2rem;
+    }
+
+    /* code pane */
+    .ide-code {
+      padding: 0.6rem 0.75rem;
+      overflow: hidden;
+    }
+
+    .code-line {
+      display: flex;
+      gap: 0.6rem;
+      line-height: 1.65;
+    }
+
+    .line-num {
+      font-size: 0.66rem;
+      color: #505070;
+      min-width: 14px;
+      text-align: right;
+      user-select: none;
+    }
+
+    .line-text {
+      font-size: 0.67rem;
+      color: #c0c0d8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .kw  { color: #7c9ee8; }   /* keyword */
+    .str { color: #98c994; }   /* string  */
+    .cmt { color: #606080; }   /* comment */
+    .hl  { color: #f0c070; }   /* highlight */
+
+    /* ── Use-case cards ── */
+    .usecase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .usecase-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .usecase-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f62fe;
+    }
+
+    .usecase-icon.purple { color: #7c5cd8; }
+    .usecase-icon.teal   { color: #0e7490; }
+    .usecase-icon.green  { color: #1a7f37; }
+
+    .usecase-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1f2328;
+      margin-bottom: 0.2rem;
+    }
+
+    .usecase-text span {
+      font-size: 0.82rem;
+      color: #57606a;
+      line-height: 1.5;
+    }
+
+    /* ── Tagline banner ── */
+    .tagline {
+      margin-top: 1.25rem;
+      background: #f0f5ff;
+      border: 1px solid #c7d7fd;
+      border-radius: 8px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .tagline-arrow {
+      color: #0f62fe;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tagline p {
+      font-size: 0.95rem;
+      color: #1f2328;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .body-grid    { grid-template-columns: 1fr; }
+      .usecase-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>7</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 7</span>
+    <p class="part-tag">Part 2</p>
+    <h2 class="slide-title">Bob: Use Cases and Features</h2>
+    <p class="slide-subtitle">IBM Bob is an AI SDLC partner that can be used to implement hundreds of use cases</p>
+
+    <div class="content">
+      <div class="body-grid">
+
+        <!-- ── IDE mockup ── -->
+        <div class="ide-mockup">
+          <div class="ide-titlebar">
+            <span class="ide-dot red"></span>
+            <span class="ide-dot yellow"></span>
+            <span class="ide-dot green"></span>
+            <span class="ide-tab">architecture_diagram.md</span>
+            <span class="ide-tab active">README.md ×</span>
+            <span class="ide-tab" style="margin-left:auto;background:#0f62fe;color:#fff;border-radius:4px;">IBM BOB</span>
+          </div>
+          <div class="ide-body">
+            <div class="ide-sidebar">
+              <div class="ide-sidebar-section">Explorer</div>
+              <div class="ide-sidebar-section" style="margin-top:0.3rem;">Custom UI Example</div>
+              <div class="ide-sidebar-item">&#x25B8; utils</div>
+              <div class="ide-sidebar-item">&#x25B8; .env</div>
+              <div class="ide-sidebar-item">&#x25B8; devtools</div>
+              <div class="ide-sidebar-item">&nbsp;&nbsp;app.py</div>
+              <div class="ide-sidebar-item">&nbsp;&nbsp;icons.py</div>
+              <div class="ide-sidebar-item">&nbsp;&nbsp;token_manager.py</div>
+              <div class="ide-sidebar-item active">&nbsp;&nbsp;README.md</div>
+              <div class="ide-sidebar-item">&nbsp;&nbsp;requirements.txt</div>
+            </div>
+            <div class="ide-code">
+              <div class="code-line"><span class="line-num">1</span><span class="line-text"><span class="hl"># WatsonX Orchestrate Agent REST API Examples</span></span></div>
+              <div class="code-line"><span class="line-num">2</span><span class="line-text"></span></div>
+              <div class="code-line"><span class="line-num">3</span><span class="line-text">This application provides examples for invoking</span></div>
+              <div class="code-line"><span class="line-num">4</span><span class="line-text">WatsonX Orchestrate agents via REST API.</span></div>
+              <div class="code-line"><span class="line-num">5</span><span class="line-text"></span></div>
+              <div class="code-line"><span class="line-num">6</span><span class="line-text"><span class="str">**Author:**</span> Elena Lowery</span></div>
+              <div class="code-line"><span class="line-num">7</span><span class="line-text"><span class="str">**AI Assistant:**</span> Bob</span></div>
+              <div class="code-line"><span class="line-num">8</span><span class="line-text"></span></div>
+              <div class="code-line"><span class="line-num">9</span><span class="line-text"><span class="hl">## Overview</span></span></div>
+              <div class="code-line"><span class="line-num">10</span><span class="line-text">Demonstrates integration with WatsonX (WxO)</span></div>
+              <div class="code-line"><span class="line-num">11</span><span class="line-text">agents through REST API calls. Includes:</span></div>
+              <div class="code-line"><span class="line-num">12</span><span class="line-text"></span></div>
+              <div class="code-line"><span class="line-num">13</span><span class="line-text"><span class="kw">1.</span> <span class="str">**Healthcare Claims Processing**</span></span></div>
+              <div class="code-line"><span class="line-num">14</span><span class="line-text"><span class="kw">2.</span> <span class="str">**Simple AI Assistant**</span></span></div>
+              <div class="code-line"><span class="line-num">15</span><span class="line-text"></span></div>
+              <div class="code-line"><span class="line-num">16</span><span class="line-text"><span class="cmt">Both use a unified adapter pattern for</span></span></div>
+              <div class="code-line"><span class="line-num">17</span><span class="line-text"><span class="cmt">auth, token management &amp; API communication.</span></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Use-case cards ── -->
+        <div class="usecase-grid">
+
+          <div class="usecase-card">
+            <div class="usecase-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="usecase-text">
+              <strong>SDLC</strong>
+              <span>Supports all phases of the software development lifecycle</span>
+            </div>
+          </div>
+
+          <div class="usecase-card">
+            <div class="usecase-icon purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07M8.46 8.46a5 5 0 0 0 0 7.07"/>
+              </svg>
+            </div>
+            <div class="usecase-text">
+              <strong>Java modernization</strong>
+              <span>Java upgrades and framework migrations</span>
+            </div>
+          </div>
+
+          <div class="usecase-card">
+            <div class="usecase-icon teal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+                <path d="M7 8h.01M11 8h.01M7 12h10"/>
+              </svg>
+            </div>
+            <div class="usecase-text">
+              <strong>DevSecOps</strong>
+              <span>Supports multiple DevOps technologies and security practices</span>
+            </div>
+          </div>
+
+          <div class="usecase-card">
+            <div class="usecase-icon green">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="usecase-text">
+              <strong>Legacy modernization</strong>
+              <span>Deep expertise in IBM Z and IBM i migrations and development</span>
+            </div>
+          </div>
+
+        </div><!-- /usecase-grid -->
+      </div><!-- /body-grid -->
+
+      <!-- ── Tagline ── -->
+      <div class="tagline">
+        <span class="tagline-arrow">&#8594;</span>
+        <p>Enabled by frontier LLMs, Bob supports hundreds of technologies &mdash; from modern languages and frameworks to legacy technologies and software</p>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-06.html">&#8592; Back</a>
+      <span class="slide-counter">7 / 14</span>
+      <a class="nav-btn primary" href="slide-08.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
