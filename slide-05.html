@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 5 — Consistency of Output</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    .section-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #57606a;
+      margin: 1.5rem 0 0.65rem;
+    }
+
+    /* ── Two-panel layout ── */
+    .two-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .panel {
+      border-radius: 8px;
+      padding: 1rem 1.1rem 1.1rem;
+    }
+
+    .panel-red {
+      background: #fff8f8;
+      border: 1px solid #f5c6cb;
+    }
+
+    .panel-green {
+      background: #f6fef9;
+      border: 1px solid #b8dfc3;
+    }
+
+    .panel-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .panel-red   .panel-label { color: #cf222e; }
+    .panel-green .panel-label { color: #1a7f37; }
+
+    .panel ul {
+      padding-left: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      list-style: disc;
+    }
+
+    .panel ul li {
+      font-size: 0.88rem;
+      color: #444c56;
+      line-height: 1.55;
+    }
+
+    /* ── Strategy cards ── */
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .strategy-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 7px;
+      padding: 0.85rem 0.85rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .strategy-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .strategy-card strong {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: #1f2328;
+      line-height: 1.3;
+    }
+
+    .strategy-card span {
+      font-size: 0.8rem;
+      color: #57606a;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .two-panel       { grid-template-columns: 1fr; }
+      .strategy-grid   { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>5</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 5</span>
+    <p class="part-tag">Part 1</p>
+    <h2 class="slide-title">Consistency of Output</h2>
+    <p class="slide-subtitle">Why AI output varies — and how to reduce that variability</p>
+
+    <div class="content">
+
+      <!-- ── Why output varies ── -->
+      <p class="section-heading">Why generative AI is non-deterministic</p>
+      <div class="two-panel">
+        <div class="panel panel-red">
+          <p class="panel-label">Sources of variability</p>
+          <ul>
+            <li>Slightly different phrasing of the same prompt can produce different output</li>
+            <li>The same prompt, sent twice, may yield different results</li>
+            <li>Hidden or implicit context — chat history, active mode, workspace files — silently influences the response</li>
+          </ul>
+        </div>
+        <div class="panel panel-green">
+          <p class="panel-label">The practical reality</p>
+          <ul>
+            <li>Variability <strong>cannot be eliminated</strong> — it is inherent to how LLMs generate text</li>
+            <li>But it <strong>can be significantly reduced</strong> with deliberate techniques</li>
+            <li>Consistency improves with practice and good prompting habits</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ── Strategies ── -->
+      <p class="section-heading">Strategies for improving consistency</p>
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <span class="strategy-icon">&#9881;</span>
+          <strong>Use modes &amp; skills</strong>
+          <span>Load domain-specific instructions so Bob starts from a known, repeatable baseline every time.</span>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-icon">&#128196;</span>
+          <strong>Include examples in prompts</strong>
+          <span>A before/after example anchors the expected output format and style more reliably than description alone.</span>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-icon">&#128203;</span>
+          <strong>Manage context deliberately</strong>
+          <span>Keep context focused and relevant. Start a new chat when switching tasks to avoid carry-over interference.</span>
+        </div>
+        <div class="strategy-card">
+          <span class="strategy-icon">&#128190;</span>
+          <strong>Create reusable prompts</strong>
+          <span>Save prompts that produced good results. Reuse them as templates rather than rewriting from scratch each time.</span>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-04.html">&#8592; Back</a>
+      <span class="slide-counter">5 / 14</span>
+      <a class="nav-btn primary" href="slide-06.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
