@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 13 — Security and Guardrails in Bob</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    /* ── Section heading ── */
+    .section-heading {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #57606a;
+      margin: 1.4rem 0 0.65rem;
+    }
+
+    /* ── Layer stack ── */
+    .layer-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .layer {
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem 1rem;
+      align-items: start;
+    }
+
+    /* colour-coded layers */
+    .layer.l1 { background: #fdf4ff; border: 1px solid #e9d5f8; }
+    .layer.l2 { background: #eff4ff; border: 1px solid #c7d7fd; }
+    .layer.l3 { background: #f0fdf4; border: 1px solid #b8dfc3; }
+    .layer.l4 { background: #f7f8fa; border: 1px solid #d0d7de; }
+
+    .layer-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .layer.l1 .layer-num { background: #7c5cd8; }
+    .layer.l2 .layer-num { background: #0f62fe; }
+    .layer.l3 .layer-num { background: #1a7f37; }
+    .layer.l4 .layer-num { background: #57606a; }
+
+    .layer-content {}
+
+    .layer-content strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .layer.l1 .layer-content strong { color: #6633cc; }
+    .layer.l2 .layer-content strong { color: #0f62fe; }
+    .layer.l3 .layer-content strong { color: #1a7f37; }
+    .layer.l4 .layer-content strong { color: #1f2328; }
+
+    .layer-content ul {
+      padding-left: 1.1rem;
+      list-style: disc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .layer-content ul li {
+      font-size: 0.86rem;
+      color: #444c56;
+      line-height: 1.55;
+    }
+
+    /* ── Two-column bottom section ── */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-top: 1.25rem;
+    }
+
+    /* ── Info card ── */
+    .info-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.9rem 1rem 1rem;
+    }
+
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .info-card-icon.teal  { background: #0e7490; }
+    .info-card-icon.amber { background: #9a6700; }
+
+    .info-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1f2328;
+      margin: 0;
+    }
+
+    .info-card ul {
+      padding-left: 1.1rem;
+      list-style: disc;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .info-card ul li {
+      font-size: 0.83rem;
+      color: #57606a;
+      line-height: 1.55;
+    }
+
+    /* ── Bottom note ── */
+    .bottom-note {
+      margin-top: 1.25rem;
+      background: #fffbe6;
+      border: 1px solid #f0d990;
+      border-radius: 6px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.83rem;
+      color: #7a5000;
+      line-height: 1.6;
+    }
+
+    .bottom-note strong { color: #5a3800; }
+
+    @media (max-width: 640px) {
+      .bottom-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>13</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 13</span>
+    <p class="part-tag">Part 2</p>
+    <h2 class="slide-title">Security and Guardrails in Bob</h2>
+    <p class="slide-subtitle">Protection operates at multiple layers — from the LLM itself all the way to connected external systems</p>
+
+    <div class="content">
+
+      <p class="section-heading">Layers of security</p>
+
+      <div class="layer-stack">
+
+        <!-- Layer 1: LLM -->
+        <div class="layer l1">
+          <div class="layer-num">1</div>
+          <div class="layer-content">
+            <strong>Frontier LLM — built-in safety guardrails</strong>
+            <ul>
+              <li>IBM vets and tests every LLM before it is made available in Bob.</li>
+              <li>LLMs refuse harmful, unethical, or out-of-policy requests by design.</li>
+              <li>Responses are grounded in context — the model does not act outside the conversation.</li>
+              <li>No training on your code or data: conversations are not used to retrain the underlying model.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Layer 2: Agentic Harness -->
+        <div class="layer l2">
+          <div class="layer-num">2</div>
+          <div class="layer-content">
+            <strong>Agentic harness — reasoning and execution controls</strong>
+            <ul>
+              <li>Bob plans and confirms multi-step actions before executing them — it does not act silently.</li>
+              <li>Tool invocations are visible in the UI; you can review and cancel before they run.</li>
+              <li>Auto-approval mode is <em>off</em> by default — each tool call requires explicit confirmation unless you enable it.</li>
+              <li>Context scope is controlled: Bob only accesses files and systems that are explicitly in scope for the task.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Layer 3: Configuration -->
+        <div class="layer l3">
+          <div class="layer-num">3</div>
+          <div class="layer-content">
+            <strong>Configuration — allowed commands and MCP server settings</strong>
+            <ul>
+              <li><strong>Allowed commands:</strong> administrators can restrict which CL, SQL, and PASE commands Bob is permitted to invoke — preventing destructive or unauthorized operations.</li>
+              <li><strong>MCP servers:</strong> each server is explicitly registered in the Bob configuration; Bob cannot reach systems that are not configured.</li>
+              <li>Modes and skills can be scoped to specific roles or projects, limiting what Bob is instructed to do per context.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Layer 4: IBM i connection -->
+        <div class="layer l4">
+          <div class="layer-num">4</div>
+          <div class="layer-content">
+            <strong>IBM i connection — operating system authority</strong>
+            <ul>
+              <li>All IBM i operations run under the user profile of the active Code for i (SSH) connection.</li>
+              <li>Bob inherits that user's object-level authority — it cannot exceed what the connected ID is permitted to do.</li>
+              <li>Object-level security, library lists, and adopted authority all apply as normal.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /layer-stack -->
+
+      <!-- ── Bottom two-col ── -->
+      <div class="bottom-grid">
+
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon teal">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h4>MCP server authorization</h4>
+          </div>
+          <ul>
+            <li>MCP servers act as the integration point between Bob and external systems (databases, APIs, services).</li>
+            <li>Each MCP server is responsible for enforcing its own authorization — Bob passes requests; the server decides what is allowed.</li>
+            <li>Credentials and secrets for external systems should be stored in the MCP server configuration, never in prompts or code.</li>
+            <li>Use scoped API keys or service accounts with least-privilege access for each MCP server.</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-card-icon amber">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h4>What to watch out for</h4>
+          </div>
+          <ul>
+            <li><strong>Auto-approval:</strong> enabling it speeds up workflows but removes the confirmation step — use with caution in production environments.</li>
+            <li><strong>Context leakage:</strong> workspace files are included in context by default — exclude sensitive files or folders if they should not be seen by the LLM.</li>
+            <li><strong>Prompt injection:</strong> untrusted content in files (e.g. malicious instructions embedded in source code comments) can influence Bob's behavior — be deliberate about what you include in context.</li>
+          </ul>
+        </div>
+
+      </div><!-- /bottom-grid -->
+
+      <div class="bottom-note">
+        <strong>Key principle:</strong> Bob operates within the boundaries you define. The tighter the configuration — allowed commands, MCP scopes, user authority, and context scope — the more predictable and secure the behavior.
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-12.html">&#8592; Back</a>
+      <span class="slide-counter">13 / 14</span>
+      <a class="nav-btn primary" href="slide-14.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
