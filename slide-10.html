@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 10 — IBM i Skills and Tools</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    /* ── Key message banner ── */
+    .key-message {
+      background: #eff4ff;
+      border: 1px solid #c7d7fd;
+      border-left: 3px solid #0f62fe;
+      border-radius: 0 8px 8px 0;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      color: #1f2328;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .key-message strong { color: #0f62fe; }
+
+    /* ── Section heading ── */
+    .section-block {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #1a2456;
+    }
+
+    .section-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a2456;
+      margin: 0;
+    }
+
+    .section-header .section-sub {
+      font-size: 0.82rem;
+      color: #57606a;
+    }
+
+    .section-header .section-sub em {
+      color: #1a7f37;
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* ── Skills grid ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem 1.25rem;
+    }
+
+    .skill-group { }
+
+    .skill-group-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skill-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1a2456;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .skill-group-header span {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1a2456;
+    }
+
+    .skill-group-header .skill-count {
+      font-weight: 400;
+      color: #57606a;
+    }
+
+    .skill-list {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .skill-list li {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      color: #444c56;
+      line-height: 1.7;
+    }
+
+    /* ── Tools grid ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .tool-card {
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .tool-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .tool-card-header span {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1a2456;
+    }
+
+    .tool-entry {
+      margin-bottom: 0.45rem;
+    }
+
+    .tool-entry:last-child { margin-bottom: 0; }
+
+    .tool-name {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a2456;
+      display: block;
+      line-height: 1.4;
+    }
+
+    .tool-desc {
+      font-size: 0.75rem;
+      color: #57606a;
+      line-height: 1.45;
+    }
+
+    /* ── Tip & docs row ── */
+    .tip-docs-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .tip-box {
+      background: #fffbe6;
+      border: 1px solid #f0d990;
+      border-radius: 6px;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.82rem;
+      color: #9a6700;
+      line-height: 1.55;
+    }
+
+    .tip-box strong { color: #7a5000; }
+
+    .docs-link {
+      white-space: nowrap;
+      font-size: 0.82rem;
+      color: #0f62fe;
+      text-decoration: none;
+      border: 1px solid #c7d7fd;
+      background: #eff4ff;
+      border-radius: 6px;
+      padding: 0.42rem 0.85rem;
+      font-weight: 500;
+    }
+
+    .docs-link:hover { background: #dce8ff; }
+
+    @media (max-width: 700px) {
+      .skills-grid, .tools-grid { grid-template-columns: 1fr; }
+      .tip-docs-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>10</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 10</span>
+    <p class="part-tag">Part 2</p>
+    <h2 class="slide-title">IBM i Skills and Tools</h2>
+    <p class="slide-subtitle">What Bob knows and what it can do — automatically</p>
+
+    <div class="content">
+
+      <!-- ── Key message ── -->
+      <div class="key-message">
+        <span>&#9432;</span>
+        <span>You don't need to memorize or look these up. <strong>Bob invokes skills and tools automatically</strong> based on the context of your request. To get the best results, select the mode that matches your task: <strong>IBM i Developer</strong> or <strong>IBM i Database</strong>.</span>
+      </div>
+
+      <!-- ══════════════════════════════════════
+           SKILLS
+      ══════════════════════════════════════ -->
+      <div class="section-block">
+        <div class="section-header">
+          <h3>IBM i Skills Library</h3>
+          <span class="section-sub"><em>60+ specialized skills</em> — automatically loaded based on conversation context</span>
+        </div>
+
+        <div class="skills-grid">
+
+          <!-- RPG -->
+          <div class="skill-group">
+            <div class="skill-group-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <span>RPG <span class="skill-count">(22)</span></span>
+            </div>
+            <ul class="skill-list">
+              <li>rpg-primer-basics</li>
+              <li>rpg-free-format-fundamentals</li>
+              <li>rpg-opm-understanding</li>
+              <li>rpg-ile-understanding</li>
+              <li>rpgle-specs</li>
+              <li>rpg-legacy-specs</li>
+              <li>rpg-data-structures</li>
+              <li>rpg-procedures-functions</li>
+              <li>rpg-file-operations</li>
+              <li>rpg-indicators</li>
+              <li>rpg-cycle-explained</li>
+              <li>rpg-embedded-sql</li>
+              <li>rpg-sql-cursor</li>
+              <li>rpg-fixed-to-free</li>
+              <li>rpg-pgmdb-conversion</li>
+              <li>rpg-ospec-conversion</li>
+              <li>rpg-opm-to-ile</li>
+              <li>rpg-refactor-legacy</li>
+              <li>rpg-rla-to-sql</li>
+              <li>rpg-code-review</li>
+              <li>rpg-debugging-techniques</li>
+              <li>rpg-api</li>
+            </ul>
+          </div>
+
+          <!-- Db2 + CL column -->
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <span>Db2 for i &amp; SQL <span class="skill-count">(17)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>db2-sql-primer</li>
+                <li>db2-stored-procedures</li>
+                <li>db2-functions-udfs</li>
+                <li>db2-sql-debugging</li>
+                <li>db2-dds-understanding</li>
+                <li>db2-dds-to-ddl</li>
+                <li>db2-ddl-generation</li>
+                <li>db2-ccsid-encoding</li>
+                <li>db2-sql-performance-analysis</li>
+                <li>db2-sql-find-performance-data</li>
+                <li>db2-sql-optimization</li>
+                <li>db2-index-strategy</li>
+                <li>db2-security-best-practices</li>
+                <li>db2-journaling-commitment</li>
+                <li>db2-temporal-tables</li>
+                <li>db2-system-catalog</li>
+                <li>db2-services-catalog</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 12l2-2-2-2"/><path d="M11 14h4"/></svg>
+                </div>
+                <span>CL <span class="skill-count">(4)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>cl-primer-basics</li>
+                <li>cl-programming</li>
+                <li>cl-best-practices</li>
+                <li>clle-api</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COBOL + IWS + DDS + Unit Testing column -->
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon" style="font-size:0.6rem;font-weight:700;font-family:monospace;">CB</div>
+                <span>COBOL for i <span class="skill-count">(7)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>cobol-primer-basics</li>
+                <li>cobol-data-division</li>
+                <li>cobol-procedure-division</li>
+                <li>cobol-ile-understanding</li>
+                <li>cobol-ile-intrinsic-functions</li>
+                <li>cobol-opm-understanding</li>
+                <li>cobol-file-io</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <span>IBM i IWS <span class="skill-count">(5)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>iws-admin</li>
+                <li>iws-server-ops</li>
+                <li>iws-server-config</li>
+                <li>iws-service-ops</li>
+                <li>iws-backup</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
+                </div>
+                <span>DDS <span class="skill-count">(5)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>dds-primer-basics</li>
+                <li>dds-physical-files</li>
+                <li>dds-logical-files</li>
+                <li>dds-display-files</li>
+                <li>dds-printer-files</li>
+              </ul>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-header">
+                <div class="skill-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                </div>
+                <span>Unit Testing <span class="skill-count">(1)</span></span>
+              </div>
+              <ul class="skill-list">
+                <li>rpgunit-testing</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /skills-grid -->
+      </div><!-- /section-block -->
+
+      <!-- ══════════════════════════════════════
+           TOOLS
+      ══════════════════════════════════════ -->
+      <div class="section-block">
+        <div class="section-header">
+          <h3>IBM i Tools</h3>
+          <span class="section-sub"><em>20 purpose-built tools</em> — let Bob read, write, execute, build, test, and research directly on IBM i</span>
+        </div>
+
+        <div class="tools-grid">
+
+          <!-- Read -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <span>Read (6)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">read_member</span><span class="tool-desc">Read source members in QSYS</span></div>
+            <div class="tool-entry"><span class="tool-name">search_qsys</span><span class="tool-desc">Search libraries, objects &amp; members in QSYS</span></div>
+            <div class="tool-entry"><span class="tool-name">read_stream_file</span><span class="tool-desc">Read stream files in the IFS</span></div>
+            <div class="tool-entry"><span class="tool-name">search_ifs</span><span class="tool-desc">Search stream files &amp; directories in IFS</span></div>
+            <div class="tool-entry"><span class="tool-name">get_table_columns</span><span class="tool-desc">Fetch Db2 for i table/view column metadata</span></div>
+            <div class="tool-entry"><span class="tool-name">get_cl_command_library</span><span class="tool-desc">Look up libraries registering a CL command</span></div>
+          </div>
+
+          <!-- Write -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <span>Write (2)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">write_member</span><span class="tool-desc">Create or overwrite a source member in QSYS</span></div>
+            <div class="tool-entry"><span class="tool-name">write_stream_file</span><span class="tool-desc">Create or overwrite a stream file in the IFS</span></div>
+          </div>
+
+          <!-- Execute -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <span>Execute (4)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">execute_cl_command</span><span class="tool-desc">Run a CL command on IBM i</span></div>
+            <div class="tool-entry"><span class="tool-name">execute_sql_statement</span><span class="tool-desc">Run an SQL statement on IBM i</span></div>
+            <div class="tool-entry"><span class="tool-name">execute_pase_command</span><span class="tool-desc">Run a PASE command on IBM i</span></div>
+            <div class="tool-entry"><span class="tool-name">convert_rpg_source</span><span class="tool-desc">Convert RPG III/400 source to RPG IV</span></div>
+          </div>
+
+          <!-- Build -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <span>Build (2)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">get_compile_actions</span><span class="tool-desc">Retrieve predefined Code for IBM i compile actions</span></div>
+            <div class="tool-entry"><span class="tool-name">execute_compile_action</span><span class="tool-desc">Run a specific compile action on a file</span></div>
+          </div>
+
+          <!-- Test -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              </div>
+              <span>Test (2)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">generate_rpg_unit_test_stub</span><span class="tool-desc">Generate RPGUnit test stubs from RPGLE/SQLRPGLE</span></div>
+            <div class="tool-entry"><span class="tool-name">run_rpg_unit_test_suite</span><span class="tool-desc">Compile &amp; run RPGUnit suites with code coverage</span></div>
+          </div>
+
+          <!-- Documentation -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="skill-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <span>Documentation (4)</span>
+            </div>
+            <div class="tool-entry"><span class="tool-name">search_ibm_i_docs_with_rag</span><span class="tool-desc">Semantic search across official IBM i docs</span></div>
+            <div class="tool-entry"><span class="tool-name">fetch_cl_command_doc</span><span class="tool-desc">Fetch generated documentation for a CL command</span></div>
+            <div class="tool-entry"><span class="tool-name">search_sql_examples</span><span class="tool-desc">Search SQL examples from the Db2 for i extension</span></div>
+            <div class="tool-entry"><span class="tool-name">fetch_sql_example</span><span class="tool-desc">Fetch the full contents of an SQL example</span></div>
+          </div>
+
+        </div><!-- /tools-grid -->
+      </div><!-- /section-block -->
+
+      <!-- ── Tip + docs link ── -->
+      <div class="tip-docs-row">
+        <div class="tip-box">
+          <strong>Tip:</strong> Select the mode that matches your task — <strong>IBM i Developer</strong> for application code (RPG, COBOL, CL, DDS) or <strong>IBM i Database</strong> for Db2 for i and SQL work. The right mode ensures the most relevant skills are loaded automatically.
+        </div>
+        <a class="docs-link" href="https://bob.ibm.com/docs/ide/premium-packages/bob-for-i/bob-for-i-index" target="_blank">&#128196; Full documentation &#8599;</a>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-09.html">&#8592; Back</a>
+      <span class="slide-counter">10 / 14</span>
+      <a class="nav-btn primary" href="slide-11.html">Next &#8594;</a>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
