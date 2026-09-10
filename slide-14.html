@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide 14 — Getting Started Recommendations</title>
+  <link rel="stylesheet" href="_base.css" />
+  <style>
+    .rec-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.25rem;
+    }
+
+    .rec {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      background: #f7f8fa;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    /* colour accent on left edge */
+    .rec.c1 { border-left: 3px solid #1a7f37; }
+    .rec.c2 { border-left: 3px solid #0f62fe; }
+    .rec.c3 { border-left: 3px solid #9a6700; }
+    .rec.c4 { border-left: 3px solid #cf222e; }
+    .rec.c5 { border-left: 3px solid #cf222e; }
+    .rec.c6 { border-left: 3px solid #7c5cd8; }
+    .rec.c7 { border-left: 3px solid #0e7490; }
+
+    .rec-num {
+      min-width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+      margin-top: 1px;
+    }
+
+    .rec.c1 .rec-num { background: #1a7f37; }
+    .rec.c2 .rec-num { background: #0f62fe; }
+    .rec.c3 .rec-num { background: #9a6700; }
+    .rec.c4 .rec-num { background: #cf222e; }
+    .rec.c5 .rec-num { background: #cf222e; }
+    .rec.c6 .rec-num { background: #7c5cd8; }
+    .rec.c7 .rec-num { background: #0e7490; }
+
+    .rec-body { flex: 1; }
+
+    .rec-body strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1f2328;
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .rec-body p {
+      font-size: 0.85rem;
+      color: #57606a;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* sub-prompt pills */
+    .prompt-sub-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.45rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .prompt-sub-list li {
+      font-family: "SFMono-Regular", "Consolas", "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      color: #1f2328;
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+      border-radius: 5px;
+      padding: 0.28rem 0.65rem;
+      display: inline-block;
+    }
+
+    /* ── Closing banner ── */
+    .closing-banner {
+      margin-top: 1.25rem;
+      background: linear-gradient(135deg, #eff4ff 0%, #fdfaff 100%);
+      border: 1px solid #c7d7fd;
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: #1f2328;
+      line-height: 1.6;
+    }
+
+    .closing-banner .closing-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="ibm-logo" href="index.html">IBM</a>
+    <div class="header-divider"></div>
+    <span class="header-title">IBM i Premium Package &mdash; Getting Started Workshop</span>
+    <nav class="header-nav">Slide <strong>14</strong> of 14</nav>
+  </header>
+
+  <div class="slide">
+    <span class="slide-badge">Slide 14 &mdash; Final</span>
+    <p class="part-tag">Getting Started</p>
+    <h2 class="slide-title">Recommendations for Getting Started</h2>
+    <p class="slide-subtitle">Build confidence gradually — start safe, stay deliberate, and share what you learn</p>
+
+    <div class="content">
+      <div class="rec-list">
+
+        <div class="rec c1">
+          <div class="rec-num">1</div>
+          <div class="rec-body">
+            <strong>Start with low-risk, high-value tasks</strong>
+            <p>Begin with code understanding, documentation, and test generation. These tasks carry no risk of changing production systems, and they deliver immediate value — making them the ideal starting point for learning how to work with an agentic AI.</p>
+          </div>
+        </div>
+
+        <div class="rec c2">
+          <div class="rec-num">2</div>
+          <div class="rec-body">
+            <strong>Ask Bob to explain itself before it acts</strong>
+            <p>While learning, always verify that Bob understands the task and review its approach before execution. Use these prompts:</p>
+            <ul class="prompt-sub-list">
+              <li>Do you support this task? What skills or tools will you use?</li>
+              <li>Share the plan for completing this task without executing it.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rec c3">
+          <div class="rec-num">3</div>
+          <div class="rec-body">
+            <strong>Work with copies of production code first</strong>
+            <p>Pull source members into a development library or local workspace before involving Bob. Validate changes thoroughly in a test environment before promoting to production.</p>
+          </div>
+        </div>
+
+        <div class="rec c4">
+          <div class="rec-num">4</div>
+          <div class="rec-body">
+            <strong>Get comfortable with rollbacks</strong>
+            <p>Know how to undo changes before you make them. Use source control, journal receivers, or save objects so you have a clear path back if a result is not what you expected.</p>
+          </div>
+        </div>
+
+        <div class="rec c5">
+          <div class="rec-num">5</div>
+          <div class="rec-body">
+            <strong>Do not enable auto-approval</strong>
+            <p>The confirmation step before each tool invocation is your most important safety net. Keep it on. Review what Bob is about to do — especially for write, compile, and execute actions — before approving.</p>
+          </div>
+        </div>
+
+        <div class="rec c6">
+          <div class="rec-num">6</div>
+          <div class="rec-body">
+            <strong>Think in processes, not one-off sessions</strong>
+            <p>Invest time in creating reusable prompts, templates, and workflows. An interactive session with Bob is useful, but a well-defined repeatable process is far more valuable at scale. If you do work interactively, capture what worked: summarize completed steps and save them as a reusable prompt or workflow for next time.</p>
+          </div>
+        </div>
+
+        <div class="rec c7">
+          <div class="rec-num">7</div>
+          <div class="rec-body">
+            <strong>Share your findings with the team</strong>
+            <p>Agentic AI tools improve fastest through shared experience. Document what worked, what didn't, and any prompts or workflows you've built. Your team's collective knowledge is the fastest path to consistent, high-quality results.</p>
+          </div>
+        </div>
+
+      </div><!-- /rec-list -->
+
+      <div class="closing-banner">
+        <span class="closing-icon">&#127919;</span>
+        <span>The goal is not to move faster on day one — it's to build enough confidence and process discipline that you can move faster, safely, every day after that.</span>
+      </div>
+
+    </div><!-- /content -->
+
+    <div class="nav-controls">
+      <a class="nav-btn" href="slide-13.html">&#8592; Back</a>
+      <span class="slide-counter">14 / 14</span>
+      <span class="nav-btn disabled">Next &#8594;</span>
+    </div>
+  </div>
+
+  <footer>IBM i Premium Package Workshop &mdash; Getting Started &bull; Made with IBM Bob</footer>
+
+</body>
+</html>
